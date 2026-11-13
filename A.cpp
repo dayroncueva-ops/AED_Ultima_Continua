@@ -20,13 +20,12 @@ vector<long long> Dijkstra (int n, int r) {
     while (!Q.empty()) {
         auto [d, u] = Q.top();
         Q.pop();
-        if (d>distancia[r]) { continue;}
+        if (d>distancia[u]) { continue;}
         for (auto [v,w] : adj[u]) {
             if (distancia[u]+w < distancia[v]) {
                 distancia[v] = distancia[u]+w;
                 Q.push({distancia[v],v});
             }
-            Q.push(make_pair(distancia[v], v));
         }
     }
     return distancia;
